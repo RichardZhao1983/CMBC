@@ -7,7 +7,7 @@ pipeline {
         }
         sh 'npm --registry https://registry.npm.taobao.org install -g grunt-cli'
         sh 'npm --registry https://registry.npm.taobao.org install node-rfc@next'
-        sh 'npm --registry https://npm.sap.com install @sap/grunt-sapui5-bestpractice-build'
+        sh 'npm install @sap/grunt-sapui5-bestpractice-build'
         sh 'grunt --no-color default'
         sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js createZip uploadToABAP/:$TRANSPORT_REQUEST'   
       }
