@@ -5,8 +5,10 @@ pipeline {
       steps {
         nodejs('NodeJs') {
         }
-        sh 'npm config ls'
-        sh 'npm install grunt --no-color --gruntfile Gruntfile.js default'   
+        sh 'npm install -g grunt-cli'
+        sh 'npm install node-rfc@next'
+        sh 'npm install grunt --no-color --gruntfile Gruntfile.js default'
+        sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js createZip uploadToABAP:$TRANSPORT_REQUEST'   
       }
     }
   }
