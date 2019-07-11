@@ -19,7 +19,7 @@ pipeline {
         }
     }
 
-    stage("Build") {
+    stage("Zip") {
         steps {
            zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
         }
