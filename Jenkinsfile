@@ -21,7 +21,8 @@ pipeline {
 
     stage("Zip") {
         steps {
-           zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
+           sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js createZip'
+           //zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
         }
     }
 
