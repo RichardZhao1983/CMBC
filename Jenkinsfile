@@ -22,7 +22,7 @@ pipeline {
 
     stage("Deploy") {
         steps {
-          sh 'rm test.zip'
+          sh 'rm dist.zip'
           zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
           sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:$TRANSPORT_REQUEST' 
         }
