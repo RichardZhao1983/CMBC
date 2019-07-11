@@ -1,5 +1,11 @@
 pipeline {
   agent any
+
+  environment {
+    AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+    AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+  }
+
   stages {
 
     stage("Install") {
@@ -21,7 +27,8 @@ pipeline {
 
     stage("Deploy") {
         steps {
-           sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js createZip uploadToABAP:$TRANSPORT_REQUEST' 
+           zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
+           sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:$TRANSPORT_REQUEST' 
         }
     }
   }
