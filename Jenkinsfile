@@ -16,14 +16,15 @@ pipeline {
 
     stage("Build") {
         steps {
-           sh 'grunt --no-color default'
+          sh 'grunt --no-color default'
         }
     }
 
     stage("Deploy") {
         steps {
-           zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
-           sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:$TRANSPORT_REQUEST' 
+          sh 'rm test.zip'
+          zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
+          sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:$TRANSPORT_REQUEST' 
         }
     }
   }
