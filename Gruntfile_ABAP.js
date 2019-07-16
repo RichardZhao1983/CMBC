@@ -86,7 +86,7 @@ module.exports = function(grunt) {
     grunt.registerTask("createZip", ["zip"]);
 
     grunt.registerTask("uploadToABAP", "Uploads the application to the ABAP System", function(transportRequest) {
-        grunt.log.writeln("jobURL",jobURL);
+        grunt.log.writeln("jobURL",jobURL + "/ws/"+this.options().zipFileURL );
         grunt.log.writeln("ConnInformation",this.options().conn);
         grunt.log.writeln("Uploading to ABAP");
         if (!transportRequest) {
