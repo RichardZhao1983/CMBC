@@ -46,7 +46,8 @@ module.exports = function(grunt) {
             options: {
                 conn: abapConn,
                 zipFileURL: zipDir + zipFileSuffix,
-                codePage: "UTF8"
+                codePage: "UTF8",
+		username: "/<%= pkg.name %>"
             }
         }
         
@@ -88,8 +89,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask("uploadToABAP", "Uploads the application to the ABAP System", function(transportRequest) {
         grunt.log.writeln("jobURL",jobURL);
-	grunt.log.writeln("username",<%= pkg.username %>);
-	grunt.log.writeln("name",<%= pkg.name %>);	
+	grunt.log.writeln("username",this.options().username)
+	grunt.log.writeln("username","/<%= pkg.name %>");
+	grunt.log.writeln("name","/<%= pkg.name %>");	
         
         var testURL= this.options().zipFileURL;
         if (!(typeof this.options().zipFileURL === "undefined") && fs.existsSync(this.options().zipFileURL)) {
