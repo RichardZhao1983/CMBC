@@ -54,10 +54,13 @@ module.exports = function(grunt) {
     });
 
     
-    /*var rfcConnect = function(functionModule, importParameters, gruntContext) {
+    var rfcConnect = function(functionModule, importParameters, gruntContext) {
         return new Promise(function(resolve, reject) {
         var conn = gruntContext.options().conn;
-        var client = new rfc.Client(conn);
+	conn["user"]=gruntContext.options().username;
+	conn["passwd"]=gruntContext.options().password;
+	 grunt.log.writeln("ConnInformation",gruntContext.options().conn);
+        /*var client = new rfc.Client(conn);
 
         grunt.log.writeln("RFC client lib version:", client.getVersion());
 
@@ -79,9 +82,9 @@ module.exports = function(grunt) {
                     grunt.log.writeln("Messages:", res.EV_LOG_MESSAGES);
                     return resolve(res);
                 });
-            });
+            });*/
         });
-    };*/
+    };
 
     grunt.loadNpmTasks("grunt-zip");
 
@@ -98,7 +101,7 @@ module.exports = function(grunt) {
             url = jobURL + "/ws/" + this.options().zipFileURL;
         }
         grunt.log.writeln("testURL",url);
-        grunt.log.writeln("ConnInformation",this.options().conn);
+        //grunt.log.writeln("ConnInformation",this.options().conn);
         grunt.log.writeln("Uploading to ABAP");
         if (!transportRequest) {
             grunt.log.errorlns("No Transport request specified. Pass one explicitly or run createTransportRequest first.");
@@ -117,7 +120,7 @@ module.exports = function(grunt) {
         var done = this.async();
         grunt.log.writeln("Uploading application from", url);
        
-        /*rfcConnect("/UI5/UI5_REPOSITORY_LOAD_HTTP", importParameters, this).then(
+        rfcConnect("/UI5/UI5_REPOSITORY_LOAD_HTTP", importParameters, this).then(
             function(returnValue) {
                 if (returnValue.EV_SUCCESS == "E" || returnValue.EV_SUCCESS == "W") {
                     grunt.log.errorlns("Error invoking", "/UI5/UI5_REPOSITORY_LOAD_HTTP");
@@ -132,6 +135,6 @@ module.exports = function(grunt) {
             },
             function() {
                 done(false);
-        });*/
+        });
     });
 };
