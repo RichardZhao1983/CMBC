@@ -17,8 +17,8 @@ module.exports = function(grunt) {
     var jobURL = process.env.JOB_URL;
     var nexusSnapshotRepoURL = process.env.NEXUS_SNAPSHOT_REPO;
     var gitCommit = process.env.GIT_COMMIT;
-    var username = process.env.Credentials.bitbucket.username;
-    var password = process.env.Credentials.bitbucket.Password;
+    var username = process.env.Credentials.Username;
+    var password = process.env.Credentials.Password;
     // Global Variables
     var zipDir = "dist";
     var zipFileSuffix = ".zip";
