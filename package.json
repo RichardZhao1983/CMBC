@@ -8,6 +8,10 @@
     "grunt-cli": "1.2.0"
   },
   "username": "weidi",
-  "password": "123456"
+  "password": "123456",
+  "frontEndServer": {
+    "uname": "weidi",
+    "pword": "123456"
+  }
   
 }
