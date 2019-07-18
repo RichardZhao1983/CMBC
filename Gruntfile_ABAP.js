@@ -47,8 +47,8 @@ module.exports = function(grunt) {
                 conn: abapConn,
                 zipFileURL: zipDir + zipFileSuffix,
                 codePage: "UTF8",
-		username: "/<%= pkg.username %>",
-		password: "/<%= pkg.password %>"
+		username: "<%= pkg.username %>",
+		password: "<%= pkg.password %>"
             }
         }
         
@@ -58,11 +58,8 @@ module.exports = function(grunt) {
     var rfcConnect = function(functionModule, importParameters, gruntContext) {
         return new Promise(function(resolve, reject) {
         var conn = gruntContext.options().conn;
-	grunt.log.writeln("i am in");
-	grunt.log.writeln("ConnInformation",conn);
 	conn.user = gruntContext.options().username;
 	conn.passwd = gruntContext.options().password;
-	conn.ashost = gruntContext.options().password;
 	grunt.log.writeln("ConnInformation",conn);
         /*var client = new rfc.Client(conn);
 
