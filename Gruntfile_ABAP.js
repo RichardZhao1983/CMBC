@@ -60,10 +60,11 @@ module.exports = function(grunt) {
         var conn = gruntContext.options().conn;
 	conn.user = gruntContext.options().username;
 	conn.passwd = gruntContext.options().password;
+	
+       //var client = new rfc.Client(conn);
+	conn.passwd = "**********";
 	grunt.log.writeln("ConnInformation",conn);
-        /*var client = new rfc.Client(conn);
-
-        grunt.log.writeln("RFC client lib version:", client.getVersion());
+       /*grunt.log.writeln("RFC client lib version:", client.getVersion());
 
         client.connect(function(err) {
             if (err) { // check for login/connection errors
