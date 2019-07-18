@@ -17,7 +17,8 @@ module.exports = function(grunt) {
     var jobURL = process.env.JOB_URL;
     var nexusSnapshotRepoURL = process.env.NEXUS_SNAPSHOT_REPO;
     var gitCommit = process.env.GIT_COMMIT;
-
+    var username = process.env.Credentials;
+	//var password = process.env.bitbucket.Password;
     // Global Variables
     var zipDir = "dist";
     var zipFileSuffix = ".zip";
@@ -86,7 +87,7 @@ module.exports = function(grunt) {
     grunt.registerTask("createZip", ["zip"]);
 
     grunt.registerTask("uploadToABAP", "Uploads the application to the ABAP System", function(transportRequest) {
-        grunt.log.writeln("jobURL",jobURL + "/ws/"+this.options().zipFileURL );
+        grunt.log.writeln("username",username);
         var testURL= this.options().zipFileURL;
         if (!(typeof this.options().zipFileURL === "undefined") && fs.existsSync(this.options().zipFileURL)) {
             url = jobURL + "/ws/" + this.options().zipFileURL;
