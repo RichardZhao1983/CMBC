@@ -26,8 +26,8 @@ module.exports = function(grunt) {
 
     // Project configuration.
     var abapConn = {
-        user: abapDevelopmentUser,
-        passwd: abapDevelopmentPassword,
+        //user: abapDevelopmentUser,
+        //passwd: abapDevelopmentPassword,
         ashost: abapDevelopmentServer,
         sysnr: abapDevelopmentInstance,
         client: abapDevelopmentClient
@@ -47,7 +47,8 @@ module.exports = function(grunt) {
                 conn: abapConn,
                 zipFileURL: zipDir + zipFileSuffix,
                 codePage: "UTF8",
-		username: "/<%= pkg.username %>"
+		username: "/<%= pkg.username %>",
+		password: "/<%= pkg.password %>"
             }
         }
         
@@ -57,8 +58,8 @@ module.exports = function(grunt) {
     var rfcConnect = function(functionModule, importParameters, gruntContext) {
         return new Promise(function(resolve, reject) {
         var conn = gruntContext.options().conn;
-	conn["user"]=gruntContext.options().username;
-	conn["passwd"]=gruntContext.options().password;
+	conn["user"] = gruntContext.options().username;
+	conn["passwd"] = gruntContext.options().password;
 	 grunt.log.writeln("ConnInformation",gruntContext.options().conn);
         /*var client = new rfc.Client(conn);
 
