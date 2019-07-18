@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                 conn: abapConn,
                 zipFileURL: zipDir + zipFileSuffix,
                 codePage: "UTF8",
-		username: "/<%= pkg.name %>"
+		username: "/<%= pkg.username %>"
             }
         }
         
