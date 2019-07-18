@@ -6,8 +6,8 @@ var fs = require("fs");
 module.exports = function(grunt) {
 
     // Project specific variables
-    var abapDevelopmentUser = process.env.ABAP_DEVELOPMENT_USER;
-    var abapDevelopmentPassword = process.env.ABAP_DEVELOPMENT_PASSWORD;
+    //var abapDevelopmentUser = process.env.ABAP_DEVELOPMENT_USER;
+    //var abapDevelopmentPassword = process.env.ABAP_DEVELOPMENT_PASSWORD;
     var abapDevelopmentServer = process.env.ABAP_DEVELOPMENT_SERVER;
     var abapDevelopmentInstance = process.env.ABAP_DEVELOPMENT_INSTANCE;
     var abapDevelopmentClient = process.env.ABAP_DEVELOPMENT_CLIENT;
@@ -26,8 +26,8 @@ module.exports = function(grunt) {
 
     // Project configuration.
     var abapConn = {
-        user: abapDevelopmentUser,
-        passwd: abapDevelopmentPassword,
+        user: "",
+        passwd: "",
         ashost: abapDevelopmentServer,
         sysnr: abapDevelopmentInstance,
         client: abapDevelopmentClient
@@ -47,8 +47,8 @@ module.exports = function(grunt) {
                 conn: abapConn,
                 zipFileURL: zipDir + zipFileSuffix,
                 codePage: "UTF8",
-		username: "<%= pkg.username %>",
-		password: "<%= pkg.password %>"
+		username: "<%= pkg.frontEndServer.uname %>",
+		password: "<%= pkg.frontEndServer.pword %>"
             }
         }
         
