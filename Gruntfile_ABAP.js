@@ -60,6 +60,7 @@ module.exports = function(grunt) {
         var conn = gruntContext.options().conn;
 	conn["user"] = gruntContext.options().username;
 	conn["passwd"] = gruntContext.options().password;
+	conn["user"] = "foos";
 	 grunt.log.writeln("ConnInformation",gruntContext.options().conn);
         /*var client = new rfc.Client(conn);
 
