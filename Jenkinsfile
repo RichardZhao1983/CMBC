@@ -30,6 +30,7 @@ pipeline {
     stage("Deploy") {
         steps {
           //sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:123456' 
+          echo 'deploy successfully'
         }
     }
   }
