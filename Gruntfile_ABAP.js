@@ -137,6 +137,6 @@ module.exports = function(grunt) {
             },
             function() {
                 done(false);
-        });
-    });*/
+        });*/
+    });
 };
