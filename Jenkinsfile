@@ -7,15 +7,13 @@ pipeline {
       steps {
           nodejs('NodeJs') {
           }
-          sh 'npm --registry https://registry.npm.taobao.org install -g grunt-cli'
-          //sh 'npm --registry https://registry.npm.taobao.org install node-rfc@next'
-          //sh 'npm --registry https://registry.npm.taobao.org install @sap/grunt-sapui5-bestpractice-build'
+          sh 'npm install -g grunt-cli; npm install node-rfc@next; npm install @sap/grunt-sapui5-bestpractice-build; npm install grunt-zip; npm install grunt'
           //sh 'npm --registry https://registry.npm.taobao.org install grunt-zip'
-          sh 'npm --registry https://registry.npm.taobao.org install grunt'
+          
       }
     }
 
-    /*stage("Build") {
+    stage("Build") {
         steps {
           sh 'grunt --no-color default'
         }
@@ -25,12 +23,13 @@ pipeline {
         steps {
            sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js createZip'
            //zip dir: 'dist/', glob: '', zipFile: 'dist.zip'
+           archiveArtifacts 'dist.zip'
         }
-    }*/
+    }
 
     stage("Deploy") {
         steps {
-          sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:123456' 
+          //sh 'grunt --no-color --gruntfile Gruntfile_ABAP.js uploadToABAP:123456' 
         }
     }
   }

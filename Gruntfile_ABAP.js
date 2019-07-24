@@ -47,8 +47,8 @@ module.exports = function(grunt) {
                 conn: abapConn,
                 zipFileURL: zipDir + zipFileSuffix,
                 codePage: "UTF8",
-		username: "<%= pkg.frontEndServer.uname %>",
-		password: "<%= pkg.frontEndServer.pword %>"
+		        username: "<%= pkg.frontEndServer.uname %>",
+		        password: "<%= pkg.frontEndServer.pword %>"
             }
         }
         
@@ -122,7 +122,7 @@ module.exports = function(grunt) {
         var done = this.async();
         grunt.log.writeln("Uploading application from", url);
        
-        rfcConnect("/UI5/UI5_REPOSITORY_LOAD_HTTP", importParameters, this).then(
+        /*rfcConnect("/UI5/UI5_REPOSITORY_LOAD_HTTP", importParameters, this).then(
             function(returnValue) {
                 if (returnValue.EV_SUCCESS == "E" || returnValue.EV_SUCCESS == "W") {
                     grunt.log.errorlns("Error invoking", "/UI5/UI5_REPOSITORY_LOAD_HTTP");
@@ -137,6 +137,6 @@ module.exports = function(grunt) {
             },
             function() {
                 done(false);
-        });
+        });*、
     });
 };
